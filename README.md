@@ -4,7 +4,8 @@
 
 <div align="center">
 <h1>Currency Convertor</h1>
-<p>💲 The world's most trusted, fast and secure currency converter app</p> 
+💲 The world's most trusted, fast and secure currency converter app
+</p>
 </div>
 
 <div align="center">
@@ -14,8 +15,7 @@
 <div align="center">
 
 <img src="https://user-images.githubusercontent.com/62628408/176175476-3e22d60d-b405-4f99-99d9-0de4a4f71a8a.png" alt="Rocketmeme Preview">
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f7c5c576-f1b4-40f9-ba1b-6a39ec0ffa1d/deploy-status)](https://app.netlify.com/sites/currency-convertor/deploys)
+</div>
 
 ## Run project locally
 
