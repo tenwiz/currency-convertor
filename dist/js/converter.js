@@ -14,25 +14,25 @@
 //   ease: "bounce",
 // });
 
-const convertOptions = document.querySelectorAll(".convertOptions select");
-base = document.querySelector(".baseCurrency select");
-foreign = document.querySelector(".foreignCurrency select");
-getButton = document.querySelector("form button");
-const apiKey = "453b43b410f75e41ff0c1b15";
+const convertOptions = document.querySelectorAll('.convertOptions select');
+base = document.querySelector('.baseCurrency select');
+foreign = document.querySelector('.foreignCurrency select');
+getButton = document.querySelector('form button');
+const apiKey = '453b43b410f75e41ff0c1b15';
 
 for (let i = 0; i < convertOptions.length; i++) {
   for (currency_code in country_code) {
     let selected;
     if (i == 0) {
-      selected = currency_code == "USD" ? "selected" : "";
+      selected = currency_code == 'USD' ? 'selected' : '';
     } else if (i == 1) {
-      selected = currency_code == "GBP" ? "selected" : "";
+      selected = currency_code == 'GBP' ? 'selected' : '';
     }
 
     let optionTag = `<option value="${currency_code}" ${selected}>${currency_code}</option>`;
-    convertOptions[i].insertAdjacentHTML("beforeend", optionTag);
+    convertOptions[i].insertAdjacentHTML('beforeend', optionTag);
   }
-  convertOptions[i].addEventListener("change", (e) => {
+  convertOptions[i].addEventListener('change', (e) => {
     loadFlag(e.target);
   });
 }
@@ -40,23 +40,23 @@ for (let i = 0; i < convertOptions.length; i++) {
 function loadFlag(element) {
   for (code in country_code) {
     if (code == element.value) {
-      let imgTag = element.parentElement.querySelector("img");
+      let imgTag = element.parentElement.querySelector('img');
       imgTag.src = `https://flagcdn.com/h20/${country_code[code]}.png`;
     }
   }
 }
 
-window.addEventListener("load", () => {
+window.addEventListener('load', () => {
   getExchangeRate();
 });
 
-getButton.addEventListener("click", (e) => {
+getButton.addEventListener('click', (e) => {
   e.preventDefault();
   getExchangeRate();
 });
 
-const exchangeIcon = document.querySelector(".formContainer .convertIcon");
-exchangeIcon.addEventListener("click", () => {
+const exchangeIcon = document.querySelector('.formContainer .convertIcon');
+exchangeIcon.addEventListener('click', () => {
   let tempCode = base.value;
   base.value = foreign.value;
   foreign.value = tempCode;
@@ -66,12 +66,12 @@ exchangeIcon.addEventListener("click", () => {
 });
 
 function getExchangeRate() {
-  const amount = document.querySelector(".value input"),
-    exchangeRateText = document.querySelector(".result");
+  const amount = document.querySelector('.value input'),
+    exchangeRateText = document.querySelector('.result');
   let amountVal = amount.value;
 
-  if (amountVal == "" || amountVal == "0") {
-    amount.value = "300";
+  if (amountVal == '' || amountVal == '0') {
+    amount.value = '300';
     amountVal = 300;
   }
 
@@ -83,11 +83,11 @@ function getExchangeRate() {
     .then((result) => {
       let exchangeRate = result.conversion_rates[foreign.value];
       let totalExchangeRate = (amountVal * exchangeRate).toLocaleString();
-      const exchangeRateText = document.querySelector(".result");
+      const exchangeRateText = document.querySelector('.result');
       // exchangeRateText.innerText = `${amountVal} ${base.value} = ${totalExchangeRate} ${foreign.value}`; // 1 USD = 414.27 NGN
       exchangeRateText.innerText = `${totalExchangeRate} ${foreign.value}`; // 414.27 NGN
     })
     .catch(() => {
-      exchangeRateText.innerText = "Error ⛔";
+      exchangeRateText.innerText = 'Error ⛔';
     });
 }
